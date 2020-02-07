@@ -1,0 +1,8 @@
+//Page
+export const SET_SCROLL_POSITION_Y = 'SET_SCROLL_POSITION_Y';
+export const SET_BROWSER_HEIGHT = 'SET_BROWSER_HEIGHT';
+export const SET_BROWSER_WIDTH = 'SET_BROWSER_WIDTH';
+export const TOGGLE_MENU = 'TOGGLE_MENU';
+
+// Locale
+export const SET_LANGUAGE = 'SET_LANGUAGE';

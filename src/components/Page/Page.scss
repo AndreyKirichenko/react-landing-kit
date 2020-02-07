@@ -1,0 +1,22 @@
+.page {
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+.page__content {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: calc(100vh - 106px);
+  position: relative;
+}
+
+.page__main {
+  display: flex;
+  justify-content: space-between;
+  min-height: calc(100vh - 106px);
+  position: relative;
+  width: 100%;
+}

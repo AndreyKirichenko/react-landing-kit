@@ -1,1 +1,4 @@
-# react-landing-kit
+# oughts-and-crosses
+npm i
+
+npm start

@@ -1,0 +1,52 @@
+@import '../../styles/theme';
+
+.menu-desktop {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.menu-desktop__item {
+  position: relative;
+}
+
+.menu-desktop__link {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  box-sizing: border-box;
+  color: #fff;
+  font-family: $montserrat-font;
+  font-size: 16px;
+  justify-content: center;
+  line-height: 1em;
+  text-transform: lowercase;
+  position: relative;
+  transition: color 0.25s ease, transform 0.25s ease;
+  height: 40px;
+  padding: 0 32px;
+}
+
+.menu-desktop__link:hover {
+  color: #FBEB04;
+}
+
+@keyframes menu-desktop__letter {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.menu-desktop__letter {
+  display: inline-block;
+  transform: scaleX(1);
+}
+
+.menu-desktop.menu-desktop--with-initial-animations {
+  .menu-desktop__letter {
+    animation: menu-desktop__letter 0.5s 1 ease-in;
+  }
+}

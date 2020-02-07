@@ -1,0 +1,26 @@
+@import '../../styles/theme';
+
+@keyframes header-logo-scale-x {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.header-logo {
+  align-items: center;
+  color: #fff;
+  font-family: $raleway-font;
+  font-size: 40px;
+  line-height: 1em;
+  padding: 8px;
+  text-transform: uppercase;
+}
+
+.header-logo--with-animated-letters .header-logo__letter {
+  display: inline-block;
+  transform: scaleX(1);
+  animation: header-logo-scale-x 0.5s 1 ease-in;
+}

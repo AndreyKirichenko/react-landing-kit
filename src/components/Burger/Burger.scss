@@ -1,0 +1,41 @@
+@import '../../styles/theme';
+
+.burger {
+  align-items: center;
+  cursor: pointer;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  height: 40px;
+}
+
+.burger__text {
+  color: #fff;
+  display: none;
+  font-family: $montserrat-font;
+  font-size: 16px;
+  line-height: 1em;
+}
+
+.burger__text--visible {
+  display: block;
+}
+
+.burger__letter {
+  display: inline-block;
+  transform: scaleX(1);
+  transition: trans;
+}
+
+@keyframes burger__letter {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.burger--with-initial-animation  .burger__letter {
+  animation: burger__letter 0.5s 1 ease-in;
+}

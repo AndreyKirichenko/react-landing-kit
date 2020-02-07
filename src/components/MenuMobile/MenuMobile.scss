@@ -1,0 +1,39 @@
+@import '../../styles/theme';
+
+.menu-mobile {
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.menu-mobile__list {
+  width: 100%;
+}
+
+.menu-mobile__item {
+  position: relative;
+  width: 100%;
+}
+
+.menu-mobile__link {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  box-sizing: border-box;
+  color: #fff;
+  font-family: $montserrat-font;
+  font-size: 16px;
+  height: 44px;
+  justify-content: center;
+  line-height: 1em;
+  position: relative;
+  text-transform: lowercase;
+  transition: color 0.25s ease-in-out, transform 0.25s ease-in-out;
+  width: 100%;
+}
