@@ -1,6 +1,7 @@
 import {
   SET_BROWSER_HEIGHT,
   SET_BROWSER_WIDTH,
+  SET_SCROLL_POSITION_Y,
   TOGGLE_MENU
 } from '../actions/actionTypes';
 
@@ -27,6 +28,12 @@ const page = (state, action) => {
     return {
       ...state.page,
       width: action.payload
+    };
+
+  case SET_SCROLL_POSITION_Y:
+    return {
+      ...state.page,
+      scrollY: action.payload
     };
 
   case TOGGLE_MENU:

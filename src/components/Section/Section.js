@@ -4,23 +4,23 @@ import PropTypes from 'prop-types';
 
 import './Section.scss';
 
-const Section = ({ isMenuVisible, toggleMenu }) => {
+const Section = ({ iscrollY }) => {
 
   return (
     <section
       className='section'
     >
-      Секция
+      {scrollY}
     </section>
   );
 };
 
 Section.propTypes = {
-  isMenuVisible: PropTypes.bool,
+  scrollY: PropTypes.number,
 };
 
 const mapStateToProps = (state) => ({
-  isMenuVisible: state.page.isMenuVisible,
+  scrollY: state.page.scrollY,
 });
 
 export default connect(mapStateToProps, null)(Section);

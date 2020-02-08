@@ -8,26 +8,26 @@ import {
 export const setBrowserHeight = (height) => {
   return {
     type: SET_BROWSER_HEIGHT,
-    payload: height
+    payload: height,
   };
 };
 
 export const setBrowserWidth = (width) => {
   return {
     type: SET_BROWSER_WIDTH,
-    payload: width
+    payload: width,
   };
 };
 
-export const setScrollPositionY = (x) => {
+export const setScrollPositionY = (y) => {
   return {
     type: SET_SCROLL_POSITION_Y,
-    payload: x
+    payload: y,
   };
 };
 
 export const toggleMenu = () => {
   return {
-    type: TOGGLE_MENU
+    type: TOGGLE_MENU,
   };
 };
