@@ -1,0 +1,18 @@
+@import '../../styles/theme';
+
+.section {
+  min-height: 100vh;
+  width: 100%;
+
+  &:nth-child(1) {
+    background-color: #307;
+  }
+
+  &:nth-child(2) {
+    background-color: #703;
+  }
+
+  &:nth-child(3) {
+    background-color: #370;
+  }
+}

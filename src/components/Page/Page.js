@@ -8,6 +8,7 @@ import './Page.scss';
 import windowListener from '../../helpers/window-listener';
 import { setBrowserHeight, setBrowserWidth, setScrollPositionY } from '../../actions/page';
 import Header from '../Header';
+import Section from '../Section';
 
 const Page = ({ setBrowserHeight, setBrowserWidth, setScrollPositionY }) => {
   useEffect(() => {
@@ -42,9 +43,9 @@ const Page = ({ setBrowserHeight, setBrowserWidth, setScrollPositionY }) => {
         </div>
 
         <main className='page__main'>
-          <section />
-          <section />
-          <section />
+          <Section />
+          <Section />
+          <Section />
         </main>
       </div>
     </Router>

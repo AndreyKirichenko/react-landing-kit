@@ -32,14 +32,21 @@ const Header = ({ width }) => {
 
   return (
     <header className='header'>
+      {isMobile && <MenuMobile list={MENU_ITEMS} />}
       <div className='header__logo'>
         <HeaderLogo />
       </div>
-      <div className='header__menu'>
-        {isMobile ? <MenuMobile list={MENU_ITEMS} /> : <MenuDesktop list={MENU_ITEMS} />}
-      </div>
+      {!isMobile && (
+        <div className='header__menu'>
+          <MenuDesktop list={MENU_ITEMS} />
+        </div>
+      )}
       {
-        isMobile ? <div className='header__burger'><Burger /></div> : null
+        isMobile && (
+          <div className='header__burger'>
+            <Burger />
+          </div>
+        )
       }
     </header>
   );
