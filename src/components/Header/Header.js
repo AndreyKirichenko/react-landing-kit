@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -26,28 +26,24 @@ const MENU_ITEMS = [
   },
 ];
 
+const Header = ({ width }) => {
 
-class Header extends Component {
-  render() {
-    const { width } = this.props;
+  const isMobile = width < MEDIA_NAV;
 
-    const isMobile = width < MEDIA_NAV;
-
-    return (
-      <header className='header'>
-        <div className='header__logo'>
-          <HeaderLogo />
-        </div>
-        <div className='header__menu'>
-          {isMobile ? <MenuMobile list={MENU_ITEMS} /> : <MenuDesktop list={MENU_ITEMS} />}
-        </div>
-        {
-          isMobile ? <div className='header__burger'><Burger /></div> : null
-        }
-      </header>
-    );
-  }
-}
+  return (
+    <header className='header'>
+      <div className='header__logo'>
+        <HeaderLogo />
+      </div>
+      <div className='header__menu'>
+        {isMobile ? <MenuMobile list={MENU_ITEMS} /> : <MenuDesktop list={MENU_ITEMS} />}
+      </div>
+      {
+        isMobile ? <div className='header__burger'><Burger /></div> : null
+      }
+    </header>
+  );
+};
 
 Header.propTypes = {
   isMenuVisible: PropTypes.bool,

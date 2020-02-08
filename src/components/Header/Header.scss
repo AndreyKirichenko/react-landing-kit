@@ -1,12 +1,10 @@
 @import '../../styles/theme';
 
 .header {
-  background-color: #000;
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-  height: 40px;
   position: relative;
   z-index: 1;
 }

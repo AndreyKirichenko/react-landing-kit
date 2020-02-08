@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 
@@ -9,71 +9,52 @@ import windowListener from '../../helpers/window-listener';
 import { setBrowserHeight, setBrowserWidth, setScrollPositionY } from '../../actions/page';
 import Header from '../Header';
 
+const Page = ({ setBrowserHeight, setBrowserWidth, setScrollPositionY }) => {
+  useEffect(() => {
+    windowListener.registerResizeCallback('onPageResize', onResize);
+    windowListener.registerScrollCallback('onPageScroll', onScroll);
+    setBrowserSizes();
 
-import PageHome from '../PageHome';
+    return () => {
+      windowListener.unregisterResizeCallback('onPageResize');
+      windowListener.unregisterScrollCallback('onPageScroll');
+    };
+  });
 
-
-
-class Page extends Component{
-  state = {
-    contentPositionY: 0
-  };
-
-  componentDidMount() {
-    // this.props.fetchData();
-    windowListener.registerResizeCallback('onPageResize', this.onResize);
-    this.setBrowserSizes();
-  }
-
-  onWheel = (e) => {
-    this.props.setScrollPositionY(e.deltaY());
-  };
-
-  onResize = () => {
-    this.setBrowserSizes();
-  };
-
-  setBrowserSizes = () => {
-    const { setBrowserHeight, setBrowserWidth } = this.props;
-
+  const setBrowserSizes = () => {
     setBrowserHeight(window.innerHeight);
     setBrowserWidth(window.innerWidth);
   };
 
+  const onScroll = () => {
+    setScrollPositionY(window.scrollY);
+  };
 
-  render() {
-    return (
-      <Router>
-        <div className='page' onWheel={this.onWheel} ref={this.page}>
-          <div className='page__contenе-wrapper'>
-            <div className='page__content' ref={this.content}>
-              <div className='page__header'>
-                <Header />
-              </div>
+  const onResize = () => {
+    setBrowserSizes();
+  };
 
-              <main className='page__main'>
-                <Switch>
-                  <Route path={'/'} component={PageHome} exact />
-                </Switch>
-              </main>
-            </div>
-          </div>
+  return (
+    <Router>
+      <div className='page'>
+        <div className='page__header'>
+          <Header />
         </div>
-      </Router>
-    );  
-  }
-}
 
-Page.propTypes = {
-  lang: PropTypes.string,
-  setBrowserWidth: PropTypes.func,
-  setScrollPositionY: PropTypes.func,
+        <main className='page__main'>
+          <section />
+          <section />
+          <section />
+        </main>
+      </div>
+    </Router>
+  );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    lang: state.locale.lang
-  };
+Page.propTypes = {
+  setBrowserHeigh: PropTypes.func,
+  setBrowserWidth: PropTypes.func,
+  setScrollPositionY: PropTypes.func,
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -84,4 +65,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Page);
+export default connect(null, mapDispatchToProps)(Page);

@@ -1,28 +1,35 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import classnames from 'classnames';
 
 import './MenuMobile.scss';
 import LetterWrapper from '../LetterWrapper';
 import { toggleMenu } from '../../actions/page';
 
-class MenuMobile extends Component {
-  toggleMenu = () => {
-    const { toggleMenu } = this.props;
+const MenuMobile = ({ isMenuVisible, list, toggleMenu }) => {
+
+  const classNames = classnames(
+    'menu-mobile',
+    {
+      'menu-mobile--hidden': !isMenuVisible
+    }
+  );
+
+  const onToggleMenu = () => {
     toggleMenu();
   };
 
-  getItems() {
-    const { list } = this.props;
+  const getItems = () => {
     return (
       <ul className='menu-mobile__list'>
         {
           list.map((item) => {
             const { title, url } = item;
             return (
-              <li className='menu-mobile__item' key={item} onClick={this.toggleMenu}>
+              <li className='menu-mobile__item' key={title} onClick={onToggleMenu}>
                 <Link className='menu-mobile__link' to={url}>
                   <LetterWrapper text={title} className='menu-mobile__letter'/>
                 </Link>
@@ -32,19 +39,23 @@ class MenuMobile extends Component {
         }
       </ul>
     );
-  }
+  };
 
-  render() {
-    return (
-      <div className='menu-mobile'>
-        {this.getItems()}
-      </div>
-    );
-  }
-}
+  return (
+    <div className={classNames}>
+      {getItems()}
+    </div>
+  );
+};
 
 MenuMobile.propTypes = {
   isMenuVisible: PropTypes.bool,
+};
+
+const mapStateToProps = (state) => {
+  return {
+    isMenuVisible: state.page.isMenuVisible,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -53,4 +64,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(MenuMobile);
+export default connect(mapStateToProps, mapDispatchToProps)(MenuMobile);

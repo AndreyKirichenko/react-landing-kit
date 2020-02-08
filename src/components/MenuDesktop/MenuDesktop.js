@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
@@ -6,10 +6,8 @@ import './MenuDesktop.scss';
 import LetterWrapper from '../LetterWrapper';
 
 
-class MenuDesktop extends Component {
-  getItems() {
-    const { list } = this.props;
-
+const MenuDesktop = ({ list }) => {
+  const getItems = () => {
     return list.map((item) => {
       const { title, url } = item;
       return (
@@ -20,16 +18,14 @@ class MenuDesktop extends Component {
         </li>
       );
     });
-  }
+  };
 
-  render() {
-    return (
-      <ul className='menu-desktop menu-desktop--with-initial-animations'>
-        {this.getItems()}
-      </ul>
-    );
-  }
-}
+  return (
+    <ul className='menu-desktop menu-desktop--with-initial-animations'>
+      {getItems()}
+    </ul>
+  );
+};
 
 MenuDesktop.propTypes = {
   list: PropTypes.array,
