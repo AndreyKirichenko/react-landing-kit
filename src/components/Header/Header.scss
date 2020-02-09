@@ -8,6 +8,11 @@
   flex-wrap: wrap;
   justify-content: space-between;
   position: relative;
+  transition: background 1s ease;
+}
+
+.header--with-background {
+  background-color: #000;
 }
 
 .header__logo {
