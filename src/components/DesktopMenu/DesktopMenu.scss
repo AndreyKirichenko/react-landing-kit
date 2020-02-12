@@ -1,16 +1,16 @@
 @import '../../styles/theme';
 
-.menu-desktop {
+.desktop-menu {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
 }
 
-.menu-desktop__item {
+.desktop-menu__item {
   position: relative;
 }
 
-.menu-desktop__link {
+.desktop-menu__link {
   align-items: center;
   cursor: pointer;
   display: flex;
@@ -27,11 +27,11 @@
   padding: 0 32px;
 }
 
-.menu-desktop__link:hover {
+.desktop-menu__link:hover {
   color: #FBEB04;
 }
 
-@keyframes menu-desktop__letter {
+@keyframes desktop-menu__letter {
   from {
     transform: scaleX(0);
   }
@@ -40,13 +40,13 @@
   }
 }
 
-.menu-desktop__letter {
+.desktop-menu__letter {
   display: inline-block;
   transform: scaleX(1);
 }
 
-.menu-desktop.menu-desktop--with-initial-animations {
-  .menu-desktop__letter {
-    animation: menu-desktop__letter 0.5s 1 ease-in;
+.desktop-menu.desktop-menu--with-initial-animations {
+  .desktop-menu__letter {
+    animation: desktop-menu__letter 0.5s 1 ease-in;
   }
 }

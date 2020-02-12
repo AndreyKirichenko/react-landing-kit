@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import './Section.scss';
 
-const Section = ({ iscrollY }) => {
+const Section = ({ scrollY }) => {
 
   return (
     <section

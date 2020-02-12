@@ -6,15 +6,31 @@ import PropTypes from 'prop-types';
 
 import './Page.scss';
 import windowListener from '../../helpers/window-listener';
-import { setBrowserHeight, setBrowserWidth, setScrollPositionY } from '../../actions/page';
+
+import {
+  setDocumentHeight,
+  setDocumentWidth,
+  setViewportHeight,
+  setViewportWidth,
+  setScrollPositionY,
+  setMobileMenuOpened,
+} from '../../actions/page';
+
 import Header from '../Header';
 import Section from '../Section';
 
-const Page = ({ setBrowserHeight, setBrowserWidth, setScrollPositionY }) => {
+const Page = ({
+  setDocumentHeight,
+  setDocumentWidth,
+  setViewportHeight,
+  setViewportWidth,
+  setScrollPositionY,
+  setMobileMenuOpened,
+}) => {
   useEffect(() => {
     windowListener.registerResizeCallback('onPageResize', onResize);
     windowListener.registerScrollCallback('onPageScroll', onScroll);
-    setBrowserSizes();
+    setSizes();
 
     return () => {
       windowListener.unregisterResizeCallback('onPageResize');
@@ -22,9 +38,12 @@ const Page = ({ setBrowserHeight, setBrowserWidth, setScrollPositionY }) => {
     };
   });
 
-  const setBrowserSizes = () => {
-    setBrowserHeight(window.innerHeight);
-    setBrowserWidth(window.innerWidth);
+  const setSizes = () => {
+    setDocumentHeight(document.documentElement.clientHeight);
+    setDocumentWidth(document.documentElement.clientWidth);
+    setViewportHeight(window.innerHeight);
+    setViewportWidth(window.innerWidth);
+    setMobileMenuOpened(false);
   };
 
   const onScroll = () => {
@@ -32,7 +51,7 @@ const Page = ({ setBrowserHeight, setBrowserWidth, setScrollPositionY }) => {
   };
 
   const onResize = () => {
-    setBrowserSizes();
+    setSizes();
   };
 
   return (
@@ -53,16 +72,22 @@ const Page = ({ setBrowserHeight, setBrowserWidth, setScrollPositionY }) => {
 };
 
 Page.propTypes = {
-  setBrowserHeigh: PropTypes.func,
-  setBrowserWidth: PropTypes.func,
+  setDocumentHeight: PropTypes.func,
+  setDocumentWidth: PropTypes.func,
+  setViewportHeigh: PropTypes.func,
+  setViewportWidth: PropTypes.func,
   setScrollPositionY: PropTypes.func,
+  setMobileMenuOpened: PropTypes.func,
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setBrowserHeight: bindActionCreators(setBrowserHeight, dispatch),
-    setBrowserWidth: bindActionCreators(setBrowserWidth, dispatch),
-    setScrollPositionY: bindActionCreators(setScrollPositionY, dispatch)
+    setDocumentHeight: bindActionCreators(setDocumentHeight, dispatch),
+    setDocumentWidth: bindActionCreators(setDocumentWidth, dispatch),
+    setViewportHeight: bindActionCreators(setViewportHeight, dispatch),
+    setViewportWidth: bindActionCreators(setViewportWidth, dispatch),
+    setScrollPositionY: bindActionCreators(setScrollPositionY, dispatch),
+    setMobileMenuOpened: bindActionCreators(setMobileMenuOpened, dispatch),
   };
 };
 

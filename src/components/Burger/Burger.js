@@ -2,15 +2,15 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { toggleMenu } from '../../actions/page';
+import { toggleMobileMenuOpened } from '../../actions/page';
 import classnames from 'classnames';
 
 import './Burger.scss';
 import LetterWrapper from '../LetterWrapper';
 
-const Burger = ({ isMenuVisible, toggleMenu }) => {
+const Burger = ({ isMobileMenuOpened, toggleMobileMenuOpened }) => {
   const onToggleMenu = () => {
-    toggleMenu();
+    toggleMobileMenuOpened();
   };
 
   const openTextClassNames =
@@ -18,7 +18,7 @@ const Burger = ({ isMenuVisible, toggleMenu }) => {
       'burger__text',
       'burger__text--open',
       {
-        'burger__text--visible': !isMenuVisible
+        'burger__text--visible': !isMobileMenuOpened
       }
     );
 
@@ -27,7 +27,7 @@ const Burger = ({ isMenuVisible, toggleMenu }) => {
       'burger__text',
       'burger__text--open',
       {
-        'burger__text--visible': isMenuVisible
+        'burger__text--visible': isMobileMenuOpened
       }
     );
 
@@ -53,17 +53,17 @@ const Burger = ({ isMenuVisible, toggleMenu }) => {
 };
 
 Burger.propTypes = {
-  isMenuVisible: PropTypes.bool,
-  toggleMenu: PropTypes.func,
+  isMobileMenuOpened: PropTypes.bool,
+  toggleMobileMenuOpened: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
-  isMenuVisible: state.page.isMenuVisible,
+  isMobileMenuOpened: state.page.isMenuVisible,
 });
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toggleMenu: bindActionCreators(toggleMenu, dispatch),
+    toggleMobileMenuOpened: bindActionCreators(toggleMobileMenuOpened, dispatch),
   };
 };
 

@@ -5,33 +5,33 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 
-import './MenuMobile.scss';
+import './MobileMenu.scss';
 import LetterWrapper from '../LetterWrapper';
-import { toggleMenu } from '../../actions/page';
+import { toggleMobileMenuOpened } from '../../actions/page';
 
-const MenuMobile = ({ isMenuVisible, list, toggleMenu }) => {
+const MobileMenu = ({ isMobileMenuOpened, list, toggleMobileMenuOpened }) => {
 
   const classNames = classnames(
-    'menu-mobile',
+    'mobile-menu',
     {
-      'menu-mobile--hidden': !isMenuVisible
+      'mobile-menu--hidden': !isMobileMenuOpened
     }
   );
 
   const onToggleMenu = () => {
-    toggleMenu();
+    toggleMobileMenuOpened();
   };
 
   const getItems = () => {
     return (
-      <ul className='menu-mobile__list'>
+      <ul className='mobile-menu__list'>
         {
           list.map((item) => {
             const { title, url } = item;
             return (
-              <li className='menu-mobile__item' key={title} onClick={onToggleMenu}>
-                <Link className='menu-mobile__link' to={url}>
-                  <LetterWrapper text={title} className='menu-mobile__letter'/>
+              <li className='mobile-menu__item' key={title} onClick={onToggleMenu}>
+                <Link className='mobile-menu__link' to={url}>
+                  <LetterWrapper text={title} className='mobile-menu__letter'/>
                 </Link>
               </li>
             );
@@ -48,20 +48,20 @@ const MenuMobile = ({ isMenuVisible, list, toggleMenu }) => {
   );
 };
 
-MenuMobile.propTypes = {
-  isMenuVisible: PropTypes.bool,
+MobileMenu.propTypes = {
+  isMobileMenuOpened: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => {
   return {
-    isMenuVisible: state.page.isMenuVisible,
+    isMobileMenuOpened: state.page.isMobileMenuOpened,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toggleMenu: bindActionCreators(toggleMenu, dispatch),
+    toggleMobileMenuOpened: bindActionCreators(toggleMobileMenuOpened, dispatch),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(MenuMobile);
+export default connect(mapStateToProps, mapDispatchToProps)(MobileMenu);

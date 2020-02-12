@@ -6,8 +6,8 @@ import classnames from 'classnames';
 import './Header.scss';
 
 import HeaderLogo from '../HeaderLogo';
-import MenuMobile from '../MenuMobile';
-import MenuDesktop from '../MenuDesktop';
+import MobileMenu from '../MobileMenu';
+import DesktopMenu from '../DesktopMenu';
 import Burger from '../Burger';
 
 const MAX_TRANSPARENT_SCROLL_Y = 64;
@@ -48,14 +48,15 @@ const Header = ({ scrollY, width }) => {
 
   return (
     <header className={classNames}>
-      {isMobile && <MenuMobile list={MENU_ITEMS} />}
+      {isMobile && <MobileMenu list={MENU_ITEMS} />}
+
       <div className='header__logo'>
         <HeaderLogo />
       </div>
 
       {!isMobile && (
         <div className='header__menu'>
-          <MenuDesktop list={MENU_ITEMS} />
+          <DesktopMenu list={MENU_ITEMS} />
         </div>
       )}
 

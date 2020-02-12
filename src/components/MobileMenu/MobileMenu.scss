@@ -1,6 +1,6 @@
 @import '../../styles/theme';
 
-.menu-mobile {
+.mobile-menu {
   align-items: center;
   background-color: #000;
   display: flex;
@@ -13,20 +13,20 @@
   width: 100%;
 }
 
-.menu-mobile--hidden {
+.mobile-menu--hidden {
   transform: translateY(-100%);
 }
 
-.menu-mobile__list {
+.mobile-menu__list {
   width: 100%;
 }
 
-.menu-mobile__item {
+.mobile-menu__item {
   position: relative;
   width: 100%;
 }
 
-.menu-mobile__link {
+.mobile-menu__link {
   align-items: center;
   cursor: pointer;
   display: flex;

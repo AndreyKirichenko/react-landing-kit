@@ -2,18 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import './MenuDesktop.scss';
+import './DesktopMenu.scss';
 import LetterWrapper from '../LetterWrapper';
 
 
-const MenuDesktop = ({ list }) => {
+const DesktopMenu = ({ list }) => {
   const getItems = () => {
     return list.map((item) => {
       const { title, url } = item;
       return (
-        <li className='menu-desktop__item' key={title}>
-          <Link className='menu-desktop__link' to={url.toLowerCase()}>
-            <LetterWrapper text={title} className='menu-desktop__letter' />
+        <li className='desktop-menu__item' key={title}>
+          <Link className='desktop-menu__link' to={url.toLowerCase()}>
+            <LetterWrapper text={title} className='desktop-menu__letter' />
           </Link>
         </li>
       );
@@ -21,14 +21,14 @@ const MenuDesktop = ({ list }) => {
   };
 
   return (
-    <ul className='menu-desktop menu-desktop--with-initial-animations'>
+    <ul className='desktop-menu desktop-menu--with-initial-animations'>
       {getItems()}
     </ul>
   );
 };
 
-MenuDesktop.propTypes = {
+DesktopMenu.propTypes = {
   list: PropTypes.array,
 };
 
-export default MenuDesktop;
+export default DesktopMenu;
