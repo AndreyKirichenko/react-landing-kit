@@ -4,8 +4,33 @@ import PropTypes from 'prop-types';
 
 import './Section.scss';
 
-const Section = ({ pageHeight, pageWidth, scrollY, viewportHeight, viewportWidth }) => {
+const getSideChainScrollY = ({
+  sectionPosition,
+  pageHeight,
+  viewportHeight,
+  scrollY,
+}) => {
+  let start = sectionPosition.start - viewportHeight;
 
+  if(start < 0) {
+    start = 0;
+  }
+
+  let end = sectionPosition.end;
+  const minPossibleEnd = pageHeight - viewportHeight;
+
+  if(end > minPossibleEnd) {
+    end = minPossibleEnd;
+  }
+
+  const delta = end - start;
+  const relativeScrollY = scrollY - start;
+  const ratio = relativeScrollY / delta * 2 - 1;
+
+  return ratio;
+};
+
+const Section = ({ pageHeight, pageWidth, scrollY, viewportHeight, viewportWidth }) => {
   const [sectionPosition, setSectionPosition] = useState({});
   const ref = createRef();
 
@@ -19,7 +44,6 @@ const Section = ({ pageHeight, pageWidth, scrollY, viewportHeight, viewportWidth
 
   const setPositions = () => {
     const sectionHeight = ref.current.offsetHeight;
-
     const start = ref.current.getBoundingClientRect().top + scrollY;
     const end = start + sectionHeight;
 
@@ -29,19 +53,12 @@ const Section = ({ pageHeight, pageWidth, scrollY, viewportHeight, viewportWidth
     });
   };
 
-  let start = sectionPosition.start - viewportHeight;
-
-  if(start < 0) {
-    start = 0;
-  }
-
-  let end = sectionPosition.end;
-
-  const minPossibleEnd = pageHeight - viewportHeight;
-
-  if(end > minPossibleEnd) {
-    end = minPossibleEnd;
-  }
+  const ratio = getSideChainScrollY({
+    sectionPosition,
+    pageHeight,
+    viewportHeight,
+    scrollY,
+  });
 
   return (
     <section
@@ -55,8 +72,7 @@ const Section = ({ pageHeight, pageWidth, scrollY, viewportHeight, viewportWidth
       <div>{`sectionPosition.start - ${sectionPosition.start}`}</div>
       <div>{`sectionPosition.end - ${sectionPosition.end}`}</div>
       <div>{`scrollY - ${scrollY}`}</div>
-      <div>{`start - ${start}`}</div>
-      <div>{`end - ${end}`}</div>
+      <div>{`ratio - ${ratio}`}</div>
     </section>
   );
 };
