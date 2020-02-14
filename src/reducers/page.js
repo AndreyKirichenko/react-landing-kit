@@ -1,11 +1,9 @@
 import {
-  SET_DOCUMENT_HEIGHT,
-  SET_DOCUMENT_WIDTH,
+  SET_PAGE_HEIGHT,
+  SET_PAGE_WIDTH,
   SET_VIEWPORT_HEIGHT,
   SET_VIEWPORT_WIDTH,
   SET_SCROLL_POSITION_Y,
-  SET_MOBILE_MENU_OPENED,
-  TOGGLE_MOBILE_MENU_OPENED,
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -23,16 +21,16 @@ const page = (state, action) => {
 
   switch (action.type) {
 
-  case SET_DOCUMENT_HEIGHT:
+  case SET_PAGE_HEIGHT:
     return {
       ...state.page,
-      documentHeight: action.payload,
+      height: action.payload,
     };
 
-  case SET_DOCUMENT_WIDTH:
+  case SET_PAGE_WIDTH:
     return {
       ...state.page,
-      documentWidth: action.payload,
+      width: action.payload,
     };
 
   case SET_VIEWPORT_HEIGHT:
@@ -51,18 +49,6 @@ const page = (state, action) => {
     return {
       ...state.page,
       scrollY: action.payload,
-    };
-
-  case TOGGLE_MOBILE_MENU_OPENED:
-    return {
-      ...state.page,
-      isMobileMenuOpened: !state.page.isMobileMenuOpened,
-    };
-
-  case SET_MOBILE_MENU_OPENED:
-    return {
-      ...state.page,
-      isMobileMenuOpened: action.payload,
     };
 
   default:

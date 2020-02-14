@@ -8,20 +8,21 @@ import './Page.scss';
 import windowListener from '../../helpers/window-listener';
 
 import {
-  setDocumentHeight,
-  setDocumentWidth,
+  setPageHeight,
+  setPageWidth,
   setViewportHeight,
   setViewportWidth,
   setScrollPositionY,
-  setMobileMenuOpened,
 } from '../../actions/page';
+
+import { setMobileMenuOpened } from '../../actions/mobileMenu';
 
 import Header from '../Header';
 import Section from '../Section';
 
 const Page = ({
-  setDocumentHeight,
-  setDocumentWidth,
+  setPageHeight,
+  setPageWidth,
   setViewportHeight,
   setViewportWidth,
   setScrollPositionY,
@@ -39,11 +40,10 @@ const Page = ({
   });
 
   const setSizes = () => {
-    setDocumentHeight(document.documentElement.clientHeight);
-    setDocumentWidth(document.documentElement.clientWidth);
+    setPageHeight(document.body.clientHeight);
+    setPageWidth(document.body.clientWidth);
     setViewportHeight(window.innerHeight);
     setViewportWidth(window.innerWidth);
-    setMobileMenuOpened(false);
   };
 
   const onScroll = () => {
@@ -51,6 +51,7 @@ const Page = ({
   };
 
   const onResize = () => {
+    setMobileMenuOpened(false);
     setSizes();
   };
 
@@ -72,8 +73,8 @@ const Page = ({
 };
 
 Page.propTypes = {
-  setDocumentHeight: PropTypes.func,
-  setDocumentWidth: PropTypes.func,
+  setPageHeight: PropTypes.func,
+  setPageWidth: PropTypes.func,
   setViewportHeigh: PropTypes.func,
   setViewportWidth: PropTypes.func,
   setScrollPositionY: PropTypes.func,
@@ -82,8 +83,8 @@ Page.propTypes = {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setDocumentHeight: bindActionCreators(setDocumentHeight, dispatch),
-    setDocumentWidth: bindActionCreators(setDocumentWidth, dispatch),
+    setPageHeight: bindActionCreators(setPageHeight, dispatch),
+    setPageWidth: bindActionCreators(setPageWidth, dispatch),
     setViewportHeight: bindActionCreators(setViewportHeight, dispatch),
     setViewportWidth: bindActionCreators(setViewportWidth, dispatch),
     setScrollPositionY: bindActionCreators(setScrollPositionY, dispatch),

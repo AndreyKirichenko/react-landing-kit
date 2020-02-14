@@ -2,10 +2,10 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { toggleMobileMenuOpened } from '../../actions/page';
 import classnames from 'classnames';
 
 import './Burger.scss';
+import { toggleMobileMenuOpened } from '../../actions/mobileMenu';
 import LetterWrapper from '../LetterWrapper';
 
 const Burger = ({ isMobileMenuOpened, toggleMobileMenuOpened }) => {
@@ -58,7 +58,7 @@ Burger.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  isMobileMenuOpened: state.page.isMenuVisible,
+  isMobileMenuOpened: state.mobileMenu.isMobileMenuOpened,
 });
 
 const mapDispatchToProps = (dispatch) => {

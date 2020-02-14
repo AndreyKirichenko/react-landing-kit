@@ -1,6 +1,10 @@
 @import '../../styles/theme';
 
 .section {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   min-height: 100vh;
   width: 100%;
 

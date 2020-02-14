@@ -7,7 +7,7 @@ import classnames from 'classnames';
 
 import './MobileMenu.scss';
 import LetterWrapper from '../LetterWrapper';
-import { toggleMobileMenuOpened } from '../../actions/page';
+import { toggleMobileMenuOpened } from '../../actions/mobileMenu';
 
 const MobileMenu = ({ isMobileMenuOpened, list, toggleMobileMenuOpened }) => {
 
@@ -54,7 +54,7 @@ MobileMenu.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    isMobileMenuOpened: state.page.isMobileMenuOpened,
+    isMobileMenuOpened: state.mobileMenu.isMobileMenuOpened,
   };
 };
 

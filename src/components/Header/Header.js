@@ -29,7 +29,7 @@ const MENU_ITEMS = [
   },
 ];
 
-const Header = ({ scrollY, width }) => {
+const Header = ({ scrollY, viewportWidth }) => {
 
   const [ withBackground, setWithBackground ] = useState(false);
 
@@ -37,7 +37,7 @@ const Header = ({ scrollY, width }) => {
     setWithBackground(scrollY > MAX_TRANSPARENT_SCROLL_Y);
   }, [scrollY]);
 
-  const isMobile = width < MEDIA_NAV;
+  const isMobile = viewportWidth < MEDIA_NAV;
 
   const classNames = classnames(
     'header',
@@ -73,12 +73,12 @@ const Header = ({ scrollY, width }) => {
 
 Header.propTypes = {
   scrollY: PropTypes.number,
-  width: PropTypes.number,
+  viewportWidth: PropTypes.number,
 };
 
 const mapStateToProps = (state) => ({
   scrollY: state.page.scrollY,
-  width: state.page.width,
+  viewportWidth: state.page.viewportWidth,
 });
 
 export default connect(mapStateToProps)(Header);
