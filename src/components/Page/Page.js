@@ -18,7 +18,7 @@ import {
 import { setMobileMenuOpened } from '../../actions/mobileMenu';
 
 import Header from '../Header';
-import Section from '../Section';
+import Home from '../../pages/Home';
 
 const Page = ({
   setPageHeight,
@@ -63,9 +63,7 @@ const Page = ({
         </div>
 
         <main className='page__main'>
-          <Section />
-          <Section />
-          <Section />
+          <Home />
         </main>
       </div>
     </Router>
